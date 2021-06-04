@@ -4,6 +4,7 @@ public class Logueo {
 	
 
 Long usuario_id;
+
 public Logueo( Long usuario_id) {
 	super();
 

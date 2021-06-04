@@ -34,10 +34,10 @@ public class UsuarioRest  extends BaseControllerImplementation<Usuarios,UsuarioS
 		
 	}
 	@PutMapping("/update/{id}")
-	public ResponseEntity<String> Update(@PathVariable Long id,@RequestBody Usuarios usuario) {
+	public ResponseEntity<?> Update(@PathVariable Long id,@RequestBody Usuarios usuario) {
 		try {
 			service.update(id, usuario);
-			return ResponseEntity.status(HttpStatus.OK).body("{mensaje:update correcto}");
+			return ResponseEntity.status(HttpStatus.OK).body(usuario);
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{error:Petición incorrecta}");
 		}

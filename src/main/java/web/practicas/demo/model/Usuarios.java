@@ -6,25 +6,24 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "usuario")
-public class Usuarios  extends Base{
+public class Usuarios extends Base {
 
-	@Column(name = "email",unique=true)
+	@Column(name = "email", unique = true)
 	String email;
 	@Column(name = "username", unique = true)
 	String username;
 	@Column(name = "password")
 	String pass;
-	
-	
 
-	public Usuarios(Long id, String email, String pass,String username) {
-		this.username=username;
+	public Usuarios(String email, String pass, String username) {
+		super();
+		this.username = username;
 		this.email = email;
 		this.pass = pass;
 	}
 
 	public Usuarios() {
-
+		super();
 	}
 
 	public String getEmail() {
