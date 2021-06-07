@@ -9,17 +9,17 @@ import javax.persistence.*;
 public class Atributo{
 	@Id
 	@Column(name="nombre_Atributo")
-	private String NombreAtributo;
+	private String nombreAtributo;
 	@Column(name="tipo_Dato")
 	private String tipoDato;
 	@Column(name="descripcion")
 	private String descripcion;
-	@OneToMany(mappedBy = "atributo")
+	@OneToMany(mappedBy = "atributo",cascade = CascadeType.ALL)
 	List<Atributo_Proyecto>relaciones;
 
 	public Atributo(String nombreAtributo, String tipoDato, String descripcion) {
 		super();
-		NombreAtributo = nombreAtributo;
+		nombreAtributo = nombreAtributo;
 		this.tipoDato = tipoDato;
 		this.descripcion = descripcion;
 	}
@@ -28,10 +28,10 @@ public class Atributo{
 	}
 
 	public String getNombreAtributo() {
-		return NombreAtributo;
+		return nombreAtributo;
 	}
 	public void setNombreAtributo(String nombreAtributo) {
-		NombreAtributo = nombreAtributo;
+		nombreAtributo = nombreAtributo;
 	}
 	public String getTipoDato() {
 		return tipoDato;

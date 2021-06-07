@@ -21,7 +21,7 @@ public class Proyecto extends Base {
 	private String nombre;
 	@Column(name = "equipo")
 	private String equipo;
-	@OneToMany(mappedBy ="proyecto" )
+	@OneToMany(mappedBy ="proyecto")
 	List<Atributo_Proyecto>relaciones;
 
 
