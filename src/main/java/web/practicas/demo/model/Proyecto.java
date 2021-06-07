@@ -31,6 +31,16 @@ public class Proyecto extends Base {
 		super();
 
 	}
+	
+
+
+	public Proyecto(String nombre, String equipo, List<Atributo_Proyecto> relaciones) {
+		super();
+		this.nombre = nombre;
+		this.equipo = equipo;
+		this.relaciones = relaciones;
+	}
+
 
 
 	public String getNombre() {

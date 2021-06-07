@@ -39,6 +39,7 @@ public class BaseServiceImplementation<E extends Base, ID extends Serializable> 
 
 		try {
 			repository.save(entidad);
+		
 		} catch (Exception e) {
 			throw new Exception(e.getMessage());
 		}
@@ -49,7 +50,7 @@ public class BaseServiceImplementation<E extends Base, ID extends Serializable> 
 	public void update(ID id, E entidad) throws Exception {
 
 		try {
-			if(id==entidad.getId())
+			if(id.equals(entidad.getId()))
 			repository.save(entidad);
 		} catch (Exception e) {
 			throw new Exception(e.getMessage());

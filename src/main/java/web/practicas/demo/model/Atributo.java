@@ -1,30 +1,34 @@
 package web.practicas.demo.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name="atributo")
-public class Atributo{
+public class Atributo implements Serializable{
+
 	@Id
-	@Column(name="nombre_Atributo")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id_Atributo",nullable = false)
+	private Long idAtributo;
+	@Column(name="nombre_Atributo",unique = true,nullable = false)
 	private String nombreAtributo;
 	@Column(name="tipo_Dato")
 	private String tipoDato;
 	@Column(name="descripcion")
 	private String descripcion;
-	@OneToMany(mappedBy = "atributo",cascade = CascadeType.ALL)
-	List<Atributo_Proyecto>relaciones;
+	
 
 	public Atributo(String nombreAtributo, String tipoDato, String descripcion) {
-		super();
-		nombreAtributo = nombreAtributo;
+		
+		this.nombreAtributo = nombreAtributo;
 		this.tipoDato = tipoDato;
 		this.descripcion = descripcion;
 	}
 	public Atributo() {
-		super();
+	
 	}
 
 	public String getNombreAtributo() {

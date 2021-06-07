@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import web.practicas.demo.model.Proyecto;
 import web.practicas.demo.service.ProyectoService;
 import web.practicas.demo.service.UsuarioService;
-
+@RestController
 @CrossOrigin(origins = "*")
 @RequestMapping(path = "api/v01/proyectos")
 public class ProyectoRest extends BaseControllerImplementation<Proyecto, ProyectoService>{

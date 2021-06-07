@@ -15,9 +15,9 @@ import web.practicas.demo.model.Base;
 public interface BaseController<E extends Base,ID extends Serializable> {
 	
 	ResponseEntity <List<E>> listall() throws Exception ;
-	ResponseEntity<E>listbyid(@PathVariable ID id)throws Exception;
-	ResponseEntity<E>add(@RequestBody E entidad)throws Exception;
-	ResponseEntity<E>update(@PathVariable ID id,E entidad)throws Exception;
-	ResponseEntity<String> delete(@PathVariable ID id)throws Exception;
+	ResponseEntity<?>listbyid(@PathVariable ID id)throws Exception;
+	ResponseEntity<?>add(@RequestBody E entidad)throws Exception;
+	ResponseEntity<?>update(@PathVariable ID id,E entidad)throws Exception;
+	ResponseEntity<?> delete(@PathVariable ID id)throws Exception;
 
 }

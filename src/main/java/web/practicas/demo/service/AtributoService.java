@@ -13,6 +13,10 @@ import web.practicas.demo.repository.AtributoRepository;
 public class AtributoService  {
 	@Autowired
 	AtributoRepository repository;
+	public AtributoService(AtributoRepository repository) {
+		this.repository=repository;
+	 
+	}
 	
 	public List<Atributo> listall() throws Exception {
 
@@ -25,7 +29,7 @@ public class AtributoService  {
 	}
 
 	
-	public Optional<Atributo> listbyid(String id) throws Exception {
+	public Optional<Atributo> listbyid(Long id) throws Exception {
 
 		try {
 			return repository.findById(id);
@@ -36,10 +40,11 @@ public class AtributoService  {
 	}
 
 	
-	public void add(Atributo entidad) throws Exception {
+	public Atributo add(Atributo entidad) throws Exception {
 
 		try {
-			repository.save(entidad);
+			
+			return repository.save(entidad);
 		} catch (Exception e) {
 			throw new Exception(e.getMessage());
 		}
@@ -47,11 +52,14 @@ public class AtributoService  {
 	}
 
 	
-	public void update(String id, Atributo entidad) throws Exception {
+	public Atributo update(Long id, Atributo entidad) throws Exception {
 
 		try {
 			if(id.equals(entidad.getNombreAtributo()))
-			repository.save(entidad);
+			return repository.save(entidad);
+			else {
+				return entidad;
+			}
 		} catch (Exception e) {
 			throw new Exception(e.getMessage());
 		}
@@ -59,7 +67,7 @@ public class AtributoService  {
 	}
 
 	
-	public void delete(String id) throws Exception {
+	public void delete(Long id) throws Exception {
 
 		try {
 			repository.deleteById(id);

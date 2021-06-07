@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,7 +20,7 @@ import web.practicas.demo.repository.AtributoRepository;
 import web.practicas.demo.service.AtributoService;
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping(path = "api/v01/atributos")
+@RequestMapping(path = "/api/v01/atributos")
 public class AtributoRest {
 	@Autowired
 	AtributoService service;
@@ -40,7 +41,7 @@ public class AtributoRest {
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<Atributo> listbyid(String id) throws Exception {
+	public ResponseEntity<Atributo> listbyid(Long id) throws Exception {
 		try {
 
 			return ResponseEntity.status(HttpStatus.OK).body(service.listbyid(id).get());
@@ -50,11 +51,11 @@ public class AtributoRest {
 		}
 	}
 
-	@PostMapping("")
-	public ResponseEntity<Atributo> add(Atributo entidad) throws Exception {
+	@PostMapping("/")
+	public ResponseEntity<?> add(@RequestBody Atributo entidad) throws Exception {
 		try {
-			service.add(entidad);
-			return ResponseEntity.status(HttpStatus.OK).body(entidad);
+		
+			return ResponseEntity.status(HttpStatus.OK).body(service.add(entidad));
 		} catch (Exception e) {
 
 			throw new Exception(e.getMessage());
@@ -63,11 +64,11 @@ public class AtributoRest {
 	}
 
 @PutMapping("/{id}")
-	public ResponseEntity<Atributo> update(String id,Atributo  entidad) throws Exception {
+	public ResponseEntity<?> update(Long id,Atributo  entidad) throws Exception {
 		try {
 			
-			service.update(id, entidad);
-			return ResponseEntity.status(HttpStatus.OK).body(entidad);
+			
+			return ResponseEntity.status(HttpStatus.OK).body(service.update(id, entidad));
 		} catch (Exception e) {
 
 			throw new Exception(e.getMessage());
@@ -76,7 +77,7 @@ public class AtributoRest {
 	}
 
 @DeleteMapping("/{id}")	
-	public ResponseEntity<String> delete(String id) throws Exception {
+	public ResponseEntity<String> delete(Long id) throws Exception {
 
 		try {
 			service.delete(id);

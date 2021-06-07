@@ -47,10 +47,10 @@ public class BaseControllerImplementation<E extends Base, S extends BaseServiceI
 	}
 
 	@PostMapping("")
-	public ResponseEntity<E> add(E entidad) throws Exception {
+	public ResponseEntity<?> add(E entidad) throws Exception {
 		try {
 			service.add(entidad);
-			return ResponseEntity.status(HttpStatus.OK).body(entidad);
+			return ResponseEntity.status(HttpStatus.OK).body("hecho");
 		} catch (Exception e) {
 
 			throw new Exception(e.getMessage());
